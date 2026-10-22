@@ -1,5 +1,5 @@
 """Punto 1. Distribuciones discretas y decisiones de respuesta."""
-import math
+import math 
 
 
 def normalize(weights: dict) -> dict:
@@ -13,6 +13,31 @@ def normalize(weights: dict) -> dict:
     - Rechace pesos negativos, no finitos, diccionarios vacíos y suma cero.
     """
     # TODO: Add your code here
+
+    if not weights:
+        raise ValueError("Diccionario vacío")
+
+    for peso in weights.values():
+        if peso < 0:
+            raise ValueError("Peso negativo")
+
+        elif not math.isfinite(peso):
+            raise ValueError("Peso no finito")
+
+        elif sum(weights.values()) == 0:
+            raise ValueError("Suma da 0")
+
+    else:
+
+        rta = {}
+
+        sumas_pesos = sum(weights.values())
+
+        for clave in weights:
+            rta[clave] = weights[clave] / sumas_pesos
+
+        return rta
+
     raise NotImplementedError("Complete este bloque TODO")
     # FIN DEL BLOQUE DEL ESTUDIANTE
 
