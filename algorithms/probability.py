@@ -38,9 +38,6 @@ def normalize(weights: dict) -> dict:
 
         return rta
 
-    raise NotImplementedError("Complete este bloque TODO")
-    # FIN DEL BLOQUE DEL ESTUDIANTE
-
 
 def expected_utility(distribution: dict, utilities: dict) -> float:
     """Calcula sum_s P(s) U(s) para una acción.
@@ -72,10 +69,6 @@ def expected_utility(distribution: dict, utilities: dict) -> float:
     return utilidad
 
 
-    raise NotImplementedError("Complete este bloque TODO")
-    # FIN DEL BLOQUE DEL ESTUDIANTE
-
-
 def best_action(distribution: dict, actions: dict) -> tuple[str, dict]:
     """Retorna (nombre de acción, utilidades esperadas por acción).
 
@@ -90,6 +83,20 @@ def best_action(distribution: dict, actions: dict) -> tuple[str, dict]:
     # Validación de las acciones; no modificar.
     if not actions:
         raise ValueError("Se requiere al menos una acción")
-    # TODO: Add your code here
-    raise NotImplementedError("Complete este bloque TODO")
-    # FIN DEL BLOQUE DEL ESTUDIANTE
+
+    mejor = None
+    utilidades = {}
+
+    for a, t in actions.items():
+        utilidades[a] = expected_utility(distribution, t)
+        
+
+    mejor = max(utilidades, key=utilidades.get)
+
+    return (mejor, utilidades)
+
+    
+        
+
+    
+    
